@@ -42,6 +42,18 @@ set statusline+=\ %P    "percent through file
 set rnu
 set backspace=indent,eol,start
 
+let cache_dir = '$HOME/.cache/vim'
+silent call system('mkdir ' . cache_dir)
+
+" Keep undo history across sessions by storing it in a file
+if has('persistent_undo')
+	let undo_dir = cache_dir.'/undo'
+    " Create dirs
+    silent call system('mkdir ' . undo_dir)
+    let &undodir = undo_dir
+    set undofile
+endif
+
 " autoinstall everything from ~/.vim/bundle
 execute pathogen#infect()
 set rtp+=~/.fzf
@@ -52,7 +64,7 @@ nnoremap <leader>p :Files<cr>
 nnoremap <leader>v :vsplit<cr>
 nnoremap <leader>f :buffers<CR>:buffer<Space>
 nnoremap <leader>w <c-w><c-w>
-nnoremap <leader>r :!setup_tags<cr>:cs reset<cr>
+nnoremap <leader>r :!setup_tags<cr>:cs reset<cr>:cs add cscope.out
 
 " use cscope databases with ctags
 set cst
@@ -84,7 +96,7 @@ let g:better_whitespace_filetypes_blacklist=['pgout']
 "include files
 let g:syntastic_c_compiler='clang'
 let g:syntastic_c_compiler_options='-std=c89'
-let g:syntastic_c_include_dirs=['/home/ildus/pgpro/postgresql/src/include']
+let g:syntastic_c_include_dirs=['/home/ildus/pgpro/include/postgresql/server']
 let g:syntastic_c_no_default_include_dirs=1
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'html'] }
@@ -109,4 +121,5 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'plasticboy/vim-markdown'
 Plug 'vim-syntastic/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'exclipy/clang_complete'
 call plug#end()
