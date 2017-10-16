@@ -25,6 +25,7 @@ set linebreak textwidth=0
 set fileencodings=utf-8,cp1251,koi8-r
 set nojoinspaces " prevent double space when joining lines ending with '.'
 set nostartofline " prevent jumping to the start of line on pgdn or pgup
+set clipboard=unnamedplus
 
 set laststatus=2
 set statusline=%t       "tail of the filename
@@ -48,23 +49,28 @@ silent call system('mkdir ' . cache_dir)
 " Keep undo history across sessions by storing it in a file
 if has('persistent_undo')
 	let undo_dir = cache_dir.'/undo'
-    " Create dirs
-    silent call system('mkdir ' . undo_dir)
-    let &undodir = undo_dir
-    set undofile
+	" Create dirs
+	silent call system('mkdir ' . undo_dir)
+	let &undodir = undo_dir
+	set undofile
 endif
 
 " autoinstall everything from ~/.vim/bundle
 execute pathogen#infect()
 set rtp+=~/.fzf
 let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 nnoremap <leader>. :Tags<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>v :vsplit<cr>
 nnoremap <leader>f :buffers<CR>:buffer<Space>
 nnoremap <leader>w <c-w><c-w>
-nnoremap <leader>r :!setup_tags<cr>:cs reset<cr>:cs add cscope.out
+nnoremap <leader>r :!setup_tags<cr>:cs reset<cr>
+nnoremap <leader>z :silent :let @/ = '\<'.escape(expand('<cword>'), '\').'\>'<cr>:silent :set hlsearch<cr>
+
+" paste selected text to search by /
+vnoremap // y/<C-R>"<CR>
 
 " use cscope databases with ctags
 set cst
@@ -106,7 +112,7 @@ let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,W191'
 " au FileType c setl formatprg=$HOME/src/indent/indent\ -bc\ -bl\ -nce
 au FileType xml,html,sgml source $HOME/.vim/scripts/xmlwrap.vim
 au FileType sgml set tabstop=4 shiftwidth=4 expandtab
-au FileType python set tabstop=4 shiftwidth=4 noexpandtab
+au FileType python set tabstop=4 shiftwidth=4 expandtab
 " au FileType javascript set tabstop=4 shiftwidth=4 expandtab
 " au FileType html set tabstop=4 shiftwidth=4 expandtab
 au FileType yaml set tabstop=4 shiftwidth=4 expandtab
@@ -122,4 +128,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vim-syntastic/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'exclipy/clang_complete'
+Plug 'tpope/vim-fugitive'
+Plug 'mileszs/ack.vim'
 call plug#end()
