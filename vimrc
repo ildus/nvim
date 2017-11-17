@@ -76,7 +76,6 @@ vnoremap // y/<C-R>"<CR>
 set cst
 
 set t_Co=256
-"colorscheme PaperColor
 set background=dark
 colorscheme wombat256
 
@@ -110,8 +109,7 @@ let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,W191'
 
 " au FileType c setl formatprg=$HOME/src/indent/indent\ -bc\ -bl\ -nce
-au FileType xml,html,sgml source $HOME/.vim/scripts/xmlwrap.vim
-au FileType sgml set tabstop=4 shiftwidth=4 expandtab
+au FileType xml,sgml,html set tabstop=4 shiftwidth=4 expandtab
 au FileType python set tabstop=4 shiftwidth=4 expandtab
 " au FileType javascript set tabstop=4 shiftwidth=4 expandtab
 " au FileType html set tabstop=4 shiftwidth=4 expandtab
@@ -125,9 +123,8 @@ Plug 'ressu/vim-xdg-cache'
 Plug 'fatih/vim-go'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'plasticboy/vim-markdown'
-Plug 'vim-syntastic/syntastic'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'exclipy/clang_complete'
-Plug 'tpope/vim-fugitive'
 Plug 'mileszs/ack.vim'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
