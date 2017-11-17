@@ -1,4 +1,4 @@
-My vim configuration
+My Vim configuration
 ---------------------
 
 Plugins
@@ -20,7 +20,7 @@ Plugins
 Hotkeys
 =========
 
-Leader key - '\'
+Leader key - '\\'
 
 * `<leader>w` - switch between windows
 * `<leader>p` - open file from current folder (fuzzy search)
