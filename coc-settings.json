@@ -1,0 +1,19 @@
+{
+    "languageserver": {
+        "golang": {
+          "command": "go-langserver",
+          "filetypes": ["go"],
+          "initializationOptions": {
+            "gocodeCompletionEnabled": true,
+            "diagnosticsEnabled": true,
+            "lintTool": "golint"
+          }
+        },
+        "clangd": {
+          "command": "clangd",
+          "args": ["--background-index"],
+          "rootPatterns": ["compile_flags.txt", "compile_commands.json", "build/compile_commands.json", ".vim/", ".git/", ".hg/"],
+          "filetypes": ["c", "cc", "cpp", "objc", "objcpp"]
+        }
+    }
+}
