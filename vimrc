@@ -8,6 +8,7 @@ filetype plugin on
 set ttimeoutlen=0
 set hlsearch
 set nowrap
+set nomodeline
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -17,7 +18,9 @@ set modeline
 set showcmd
 set autoindent
 set scrolloff=8
+set scroll=0
 set number
+set hidden
 set iminsert=0
 set imsearch=0
 set showbreak=>
@@ -35,6 +38,10 @@ set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
 
 "set listchars=tab:>·,trail:~
 "set listchars=trail:~
@@ -66,11 +73,52 @@ nnoremap <leader>p :Files<cr>
 nnoremap <leader>v :vsplit<cr>
 nnoremap <leader>f :buffers<CR>:buffer<Space>
 nnoremap <leader>w <c-w><c-w>
+"nnoremap <tab> <c-w><c-w>
 nnoremap <leader>r :!setup_tags<cr>:cs reset<cr>
 nnoremap <leader>z :silent :let @/ = '\<'.escape(expand('<cword>'), '\').'\>'<cr>:silent :set hlsearch<cr>
+"nnoremap <silent> <leader>fm :call LanguageClient_contextMenu()<CR>
+"nnoremap <silent> <leader>fr :call LanguageClient_textDocument_references()<CR>
+"nnoremap <silent> <leader>fd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <leader>fh :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> <leader>fs :call LanguageClient#textDocument_documentSymbol()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " paste selected text to search by /
 vnoremap // y/<C-R>"<CR>
+
+"coc
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` to navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gl :CocList symbols<cr>
+nmap <leader> qf  <Plug>(coc-fix-current)
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+command! -nargs=0 Format :call CocAction('format')
 
 " use cscope databases with ctags
 set cst
@@ -116,6 +164,19 @@ au FileType python set tabstop=4 shiftwidth=4 expandtab
 au FileType yaml set tabstop=4 shiftwidth=4 expandtab
 au FileType json set tabstop=4 shiftwidth=4 expandtab
 
+"let g:LanguageClient_serverCommands = {
+"    \ 'go': ['go-langserver'],
+"	\ 'cpp': ['cquery', '--log-file=/tmp/cq_cpp.log'],
+"    \ }
+"" \ 'c': ['cquery', '--log-file=/tmp/cq_c.log'],
+"let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
+"let g:LanguageClient_settingsPath = '/home/ildus/Dropbox/conf/lsm.json'
+
+"set completefunc=LanguageClient#complete
+"set formatexpr=LanguageClient_textDocument_rangeFormatting()
+
+let g:rtagsUseLocationList = 0
+
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -127,4 +188,12 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'exclipy/clang_complete'
 Plug 'mileszs/ack.vim'
 Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+"Plug 'autozimu/LanguageClient-neovim', {
+"    \ 'branch': 'next',
+"    \ 'do': 'bash install.sh',
+"    \ }
 call plug#end()
+
+let g:cscope_ignored_dir = 'build$\|results$'
