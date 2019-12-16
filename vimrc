@@ -100,7 +100,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gl :CocList symbols<cr>
-nmap <leader> qf  <Plug>(coc-fix-current)
+" nmap <leader> qf  <Plug>(coc-fix-current)
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -155,6 +155,8 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'html'] }
 let g:syntastic_disabled_filetypes=['html']
 let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,W191'
+
+let g:vim_markdown_folding_disabled = 1
 
 " au FileType c setl formatprg=$HOME/src/indent/indent\ -bc\ -bl\ -nce
 au FileType xml,sgml,html set tabstop=4 shiftwidth=4 expandtab
