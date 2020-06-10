@@ -163,7 +163,7 @@ au FileType xml,sgml,html set tabstop=4 shiftwidth=4 expandtab
 au FileType python set tabstop=4 shiftwidth=4 expandtab
 " au FileType javascript set tabstop=4 shiftwidth=4 expandtab
 " au FileType html set tabstop=4 shiftwidth=4 expandtab
-au FileType yaml set tabstop=4 shiftwidth=4 expandtab
+au FileType yaml set tabstop=2 shiftwidth=2 expandtab
 au FileType json set tabstop=4 shiftwidth=4 expandtab
 
 "let g:LanguageClient_serverCommands = {
@@ -183,7 +183,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ressu/vim-xdg-cache'
-Plug 'fatih/vim-go'
+"Plug 'fatih/vim-go'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'plasticboy/vim-markdown'
 Plug 'ntpeters/vim-better-whitespace'

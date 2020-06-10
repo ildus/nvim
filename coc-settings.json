@@ -1,14 +1,5 @@
 {
     "languageserver": {
-        "golang": {
-          "command": "go-langserver",
-          "filetypes": ["go"],
-          "initializationOptions": {
-            "gocodeCompletionEnabled": true,
-            "diagnosticsEnabled": true,
-            "lintTool": "golint"
-          }
-        },
         "clangd": {
           "command": "clangd",
           "args": ["--background-index"],
