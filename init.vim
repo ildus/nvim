@@ -65,8 +65,8 @@ endif
 " autoinstall everything from ~/.vim/bundle
 execute pathogen#infect()
 set rtp+=~/.fzf
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
-let g:ackprg = 'ag --nogroup --nocolor --column'
+let $FZF_DEFAULT_COMMAND = 'pt --ignore="contrib/" -l -g ""'
+let g:ackprg = 'pt --nogroup --nocolor --column --ignore="./contrib"'
 
 nnoremap <leader>. :Tags<cr>
 nnoremap <leader>p :Files<cr>
@@ -165,17 +165,7 @@ au FileType python set tabstop=4 shiftwidth=4 expandtab
 " au FileType html set tabstop=4 shiftwidth=4 expandtab
 au FileType yaml set tabstop=2 shiftwidth=2 expandtab
 au FileType json set tabstop=4 shiftwidth=4 expandtab
-
-"let g:LanguageClient_serverCommands = {
-"    \ 'go': ['go-langserver'],
-"	\ 'cpp': ['cquery', '--log-file=/tmp/cq_cpp.log'],
-"    \ }
-"" \ 'c': ['cquery', '--log-file=/tmp/cq_c.log'],
-"let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-"let g:LanguageClient_settingsPath = '/home/ildus/Dropbox/conf/lsm.json'
-
-"set completefunc=LanguageClient#complete
-"set formatexpr=LanguageClient_textDocument_rangeFormatting()
+au FileType cpp set tabstop=4 shiftwidth=4 expandtab
 
 let g:rtagsUseLocationList = 0
 
@@ -184,7 +174,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ressu/vim-xdg-cache'
 "Plug 'fatih/vim-go'
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 Plug 'plasticboy/vim-markdown'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'exclipy/clang_complete'
@@ -192,10 +182,6 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-"Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
 call plug#end()
 
 let g:cscope_ignored_dir = 'build$\|results$'
