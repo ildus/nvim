@@ -185,3 +185,6 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 call plug#end()
 
 let g:cscope_ignored_dir = 'build$\|results$'
+
+au FileType go set tabstop=4 shiftwidth=4 noexpandtab
+autocmd BufWritePre,FileWritePre *.go   call CocAction('format')
