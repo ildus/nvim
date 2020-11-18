@@ -152,8 +152,8 @@ let g:syntastic_c_compiler_options='-std=c89'
 let g:syntastic_c_include_dirs=['/home/ildus/pgpro/include/postgresql/server']
 let g:syntastic_c_no_default_include_dirs=1
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'html'] }
-let g:syntastic_disabled_filetypes=['html']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'html', 'c', 'cpp'] }
+let g:syntastic_disabled_filetypes=['html', 'cpp', 'c']
 let g:syntastic_python_flake8_post_args='--ignore=E501,E128,E225,W191'
 
 let g:vim_markdown_folding_disabled = 1
@@ -174,12 +174,11 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'ressu/vim-xdg-cache'
 "Plug 'fatih/vim-go'
-"Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'plasticboy/vim-markdown'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'exclipy/clang_complete'
 Plug 'mileszs/ack.vim'
-Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 call plug#end()

@@ -1,21 +1,5 @@
-My Vim configuration
+My `neovim` configuration
 ---------------------
-
-Plugins
-==================
-
-```
-'junegunn/fzf',
-'junegunn/fzf.vim'
-'ressu/vim-xdg-cache'
-'fatih/vim-go'
-'ludovicchabant/vim-gutentags'
-'plasticboy/vim-markdown'
-'ntpeters/vim-better-whitespace'
-'exclipy/clang_complete'
-'mileszs/ack.vim'
-'vim-syntastic/syntastic'
-```
 
 Hotkeys
 =========
@@ -42,8 +26,9 @@ Installation steps
 1) Clone to your home folder:
 
 ```
-	git clone git@github.com:ildus/.vim.git ~/.vim
+	git clone git@github.com:ildus/nvim.git ~/.config/nvim
 ```
 
-2) Start vim
+2) Start neovim
 3) Run `:PlugInstall`
+4) Install `the_platinum_searcher`
