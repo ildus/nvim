@@ -180,7 +180,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'exclipy/clang_complete'
 Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:cscope_ignored_dir = 'build$\|results$'
