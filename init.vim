@@ -31,7 +31,7 @@ set nostartofline " prevent jumping to the start of line on pgdn or pgup
 set clipboard=unnamedplus
 
 set laststatus=2
-set statusline=%t       "tail of the filename
+set statusline=%F       "tail of the filename
 set statusline+=[%{&ff}] "file format
 set statusline+=%m      "modified flag
 set statusline+=%=      "left/right separator
@@ -87,7 +87,7 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 vnoremap // y/<C-R>"<CR>
 
 "coc
-inoremap <silent><expr> <c-space> coc#refresh()
+"inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[c` and `]c` to navigate diagnostics
@@ -95,14 +95,14 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gd <Plug>(coc-definition)
+"nmap <silent> gy <Plug>(coc-type-definition)
+"nmap <silent> gi <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 " nmap <leader> qf  <Plug>(coc-fix-current)
 
 " Remap for rename current word
-nmap <leader>rn <Plug>(coc-rename)
+"nmap <leader>rn <Plug>(coc-rename)
 
 " use cscope databases with ctags
 set cst
@@ -205,7 +205,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { "pyright", "clangd", "gopls" }
+local servers = { "pyright", "clangd", "gopls", "veridian"}
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
