@@ -1,5 +1,14 @@
 {
     "go.disable": {
         "workspaceFolders": false
+    },
+    "languageserver": {
+        "veridian": {
+            "command": "veridian",
+            "filetypes": [
+                "systemverilog",
+                "verilog"
+            ]
+        }
     }
 }
