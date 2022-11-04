@@ -65,8 +65,8 @@ endif
 " autoinstall everything from ~/.vim/bundle
 execute pathogen#infect()
 set rtp+=~/.fzf
-let $FZF_DEFAULT_COMMAND = 'pt --ignore="contrib/" -l -g ""'
-let g:ackprg = 'pt --nogroup --nocolor --column --ignore="./contrib"'
+let $FZF_DEFAULT_COMMAND = 'fd --type f --full-path'
+let g:ackprg = 'fd --type f'
 
 nnoremap <leader>. :Tags<cr>
 nnoremap <leader>p :Files<cr>
