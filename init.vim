@@ -115,8 +115,10 @@ au FileType python set tabstop=4 shiftwidth=4 expandtab
 au FileType yaml set tabstop=2 shiftwidth=2 expandtab
 au FileType json set tabstop=4 shiftwidth=4 expandtab
 au FileType cpp set tabstop=4 shiftwidth=4 expandtab
+au FileType c set tabstop=4 shiftwidth=4 expandtab
 au FileType go set tabstop=4 shiftwidth=4 expandtab
 au FileType dart set tabstop=2 shiftwidth=2 expandtab
+au FileType systemverilog set tabstop=2 shiftwidth=2 expandtab
 
 let g:rtagsUseLocationList = 0
 
