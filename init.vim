@@ -68,6 +68,8 @@ set rtp+=~/.fzf
 let $FZF_DEFAULT_COMMAND = 'fd --type f --full-path'
 let g:ackprg = 'fd --type f'
 
+map <Enter> <Leader>
+
 nnoremap <leader>. :Tags<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>v :vsplit<cr>
@@ -131,6 +133,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'neovim/nvim-lspconfig'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'gfanto/fzf-lsp.nvim'
+Plug 'nvim-lua/plenary.nvim'
 call plug#end()
 
 let g:cscope_ignored_dir = 'build$\|results$'
