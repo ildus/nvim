@@ -26,7 +26,7 @@ hi Visual		ctermfg=7		ctermbg=238		cterm=none		guifg=#f6f3e8	guibg=#444444	gui=n
 " hi Search
 hi Folded		ctermfg=103		ctermbg=238		cterm=none		guifg=#a0a8b0	guibg=#384048	gui=none
 hi Title		ctermfg=7		ctermbg=none	cterm=bold		guifg=#f6f3e8	guibg=NONE		gui=bold
-hi StatusLine	ctermfg=7		ctermbg=238		cterm=none		guifg=#f6f3e8	guibg=#444444	gui=italic
+hi StatusLine	ctermfg=7		ctermbg=238		cterm=none		guifg=#f6f3e8	guibg=#444444	gui=none
 hi VertSplit	ctermfg=238		ctermbg=238		cterm=none		guifg=#444444	guibg=#444444	gui=none
 hi StatusLineNC	ctermfg=243		ctermbg=238		cterm=none		guifg=#857b6f	guibg=#444444	gui=none
 hi LineNr		ctermfg=243		ctermbg=0		cterm=none		guifg=#857b6f	guibg=#000000	gui=none
@@ -52,9 +52,9 @@ hi Function		ctermfg=192		cterm=none		guifg=#cae682	gui=none
 hi Identifier	ctermfg=192		cterm=none		guifg=#cae682	gui=none
 hi Type			ctermfg=192		cterm=none		guifg=#cae682	gui=none
 hi Special		ctermfg=194		cterm=none		guifg=#e7f6da	gui=none
-hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=italic
-hi Comment		ctermfg=246		cterm=none		guifg=#99968b	gui=italic
-hi Todo			ctermfg=245		cterm=none		guifg=#8f8f8f	gui=italic
+hi String		ctermfg=113		cterm=none		guifg=#95e454	gui=none
+hi Comment		ctermfg=246		cterm=none		guifg=#99968b	gui=none
+hi Todo			ctermfg=245		cterm=none		guifg=#8f8f8f	gui=none
 
 
 " Links

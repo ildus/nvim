@@ -12,6 +12,9 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  -- Disable hightlight
+  client.server_capabilities.semanticTokensProvider = nil
+
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -62,8 +65,11 @@ require('lspconfig')['pyright'].setup{
 require('lspconfig')['clangd'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    filetypes = {"c", "sc", "qsc", "h", "sh", "qsh", "cc", "cpp", "hxx"},
 }
 require('lspconfig')['svlangserver'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+
+require("cscope_maps").setup({})

@@ -43,9 +43,8 @@ set cmdheight=2
 set updatetime=300
 set signcolumn=yes
 
-"set listchars=tab:>·,trail:~
-"set listchars=trail:~
 " set list
+set listchars=tab:\ \ ┊,trail:·
 
 set rnu
 set backspace=indent,eol,start
@@ -70,6 +69,8 @@ let g:ackprg = 'fd --type f'
 
 map <Enter> <Leader>
 
+nnoremap <leader>o :NV<cr>
+nnoremap <leader>l :set invlist<cr>
 nnoremap <leader>. :Tags<cr>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>v :vsplit<cr>
@@ -82,12 +83,25 @@ nnoremap <leader>z :silent :let @/ = '\<'.escape(expand('<cword>'), '\').'\>'<cr
 " paste selected text to search by /
 vnoremap // y/<C-R>"<CR>
 
-" use cscope databases with ctags
-set cst
-
 set t_Co=256
 set background=dark
 colorscheme wombat256
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
 
 function! MakeGdbBreak()
 	let path = "break ".expand('%').":".line(".")
@@ -122,6 +136,12 @@ au FileType go set tabstop=4 shiftwidth=4 expandtab
 au FileType dart set tabstop=2 shiftwidth=2 expandtab
 au FileType systemverilog set tabstop=2 shiftwidth=2 expandtab
 
+au BufRead,BufNewFile *.qsc setfiletype qsc
+au BufRead,BufNewFile *.sc setfiletype qsc
+au BufRead,BufNewFile *.qsh setfiletype qsc
+au FileType qsc set tabstop=8 shiftwidth=4 noexpandtab
+au FileType qsc set syntax=c
+
 let g:rtagsUseLocationList = 0
 
 call plug#begin('~/.vim/plugged')
@@ -135,6 +155,19 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'gfanto/fzf-lsp.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'embear/vim-localvimrc'
+Plug 'dhananjaylatkar/cscope_maps.nvim' " cscope keymaps
+Plug 'folke/which-key.nvim' " optional
+Plug 'https://github.com/alok/notational-fzf-vim'
+Plug 'sjl/badwolf'
+Plug 'morhetz/gruvbox'
+Plug 'justinmk/vim-syntax-extra'
 call plug#end()
 
-let g:cscope_ignored_dir = 'build$\|results$'
+let g:localvimrc_ask = 0
+let g:nv_search_paths = ['~/notes', ]
+let g:nv_create_note_key = 'ctrl-n'
+
+let g:badwolf_tabline = 0
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast = 'hard'
