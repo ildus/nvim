@@ -36,33 +36,41 @@ return require('packer').startup(function(use)
   use 'alok/notational-fzf-vim'
   use 'justinmk/vim-syntax-extra'
 
+
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} },
-    tag = '0.1.1'
+    tag = '0.1.1',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'telescope-fzf-native.nvim',
+      'nvim-telescope/telescope-ui-select.nvim',
+    },
+    wants = {
+      'plenary.nvim',
+      'telescope-fzf-native.nvim',
+    },
   }
 
-  local fzf_plugin = 'nvim-telescope/telescope-fzf-native.nvim'
+  use 'nvim-telescope/telescope-ui-select.nvim'
   use {
-    fzf_plugin,
-    requires = { 'nvim-telescope/telescope.nvim' },
+    'nvim-telescope/telescope-fzf-native.nvim',
     run = 'make'
   }
-
-  local ui_plugin = 'nvim-telescope/telescope-ui-select.nvim'
-  use {
-    ui_plugin,
-    requires = { 'nvim-telescope/telescope.nvim' },
-  }
-
-  require('telescope').load_extension('fzf')
-  require("telescope").load_extension("ui-select")
-  require('setup_lsp')
-  require("cscope_maps").setup({})
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
     require('packer').sync()
+  end
+
+  local init = function()
+    require('telescope').load_extension('fzf')
+    require("telescope").load_extension("ui-select")
+    require('setup_lsp')
+    require("cscope_maps").setup({})
+  end
+
+  if not pcall(init) then
+    print("error in plugins.lua")
   end
 end)
