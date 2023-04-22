@@ -69,15 +69,6 @@ let g:ackprg = 'fd --type f'
 
 map <Enter> <Leader>
 
-nnoremap <leader>o :NV<cr>
-nnoremap <leader>l :set invlist<cr>
-nnoremap <leader>. :Tags<cr>
-nnoremap <leader>p :Files<cr>
-nnoremap <leader>v :vsplit<cr>
-nnoremap <leader>f :buffers<CR>:buffer<Space>
-nnoremap <leader>w <c-w><c-w>
-"nnoremap <tab> <c-w><c-w>
-nnoremap <leader>r :!setup_tags<cr>:cs reset<cr>
 nnoremap <leader>z :silent :let @/ = '\<'.escape(expand('<cword>'), '\').'\>'<cr>:silent :set hlsearch<cr>
 
 " paste selected text to search by /
@@ -115,20 +106,17 @@ endfunction
 command! -bar GDBreak call MakeGdbBreak()
 command! -bar GDBreakClear call ClearGdbBreaks()
 
-nnoremap <leader>b :GDBreak<cr>
-nnoremap <leader>x :GDBreakClear<cr>
-
 "postgresql out files
 au BufRead,BufNewFile *.out setfiletype pgout
 let g:better_whitespace_filetypes_blacklist=['pgout']
 let g:vim_markdown_folding_disabled = 1
 
-" au FileType c setl formatprg=$HOME/src/indent/indent\ -bc\ -bl\ -nce
 au FileType xml,sgml,html set tabstop=4 shiftwidth=4 expandtab
 au FileType python set tabstop=4 shiftwidth=4 expandtab
-" au FileType javascript set tabstop=4 shiftwidth=4 expandtab
-" au FileType html set tabstop=4 shiftwidth=4 expandtab
+au FileType javascript set tabstop=2 shiftwidth=2 expandtab
+au FileType html set tabstop=2 shiftwidth=2 expandtab
 au FileType yaml set tabstop=2 shiftwidth=2 expandtab
+au FileType lua set tabstop=2 shiftwidth=2 expandtab
 au FileType json set tabstop=4 shiftwidth=4 expandtab
 au FileType cpp set tabstop=4 shiftwidth=4 expandtab
 au FileType c set tabstop=4 shiftwidth=4 expandtab
@@ -142,32 +130,8 @@ au BufRead,BufNewFile *.qsh setfiletype qsc
 au FileType qsc set tabstop=8 shiftwidth=4 noexpandtab
 au FileType qsc set syntax=c
 
-let g:rtagsUseLocationList = 0
-
-call plug#begin('~/.vim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'ressu/vim-xdg-cache'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'plasticboy/vim-markdown'
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'neovim/nvim-lspconfig'
-Plug 'psf/black', { 'branch': 'stable' }
-Plug 'gfanto/fzf-lsp.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'embear/vim-localvimrc'
-Plug 'dhananjaylatkar/cscope_maps.nvim' " cscope keymaps
-Plug 'folke/which-key.nvim' " optional
-Plug 'https://github.com/alok/notational-fzf-vim'
-Plug 'sjl/badwolf'
-Plug 'morhetz/gruvbox'
-Plug 'justinmk/vim-syntax-extra'
-call plug#end()
-
 let g:localvimrc_ask = 0
 let g:nv_search_paths = ['~/notes', ]
 let g:nv_create_note_key = 'ctrl-n'
 
-let g:badwolf_tabline = 0
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_contrast = 'hard'
+lua require('plugins')
