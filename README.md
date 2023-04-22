@@ -1,25 +1,6 @@
 My `neovim` configuration
 ---------------------
 
-Hotkeys
-=========
-
-Leader key - '\\'
-
-* `<leader>w` - switch between windows
-* `<leader>p` - open file from current folder (fuzzy search)
-* `<leader>.` - search tag (fuzzy search)
-* `<leader>v` - vertical split
-* `<leader>f` - fast buffer selection
-* `<leader>z` - search and visual text selection without moving to next match
-* `//` - in visual mode, search by selected text
-
-Cscope
-
-* `<leader>c` - show calls
-* `<leader>s` - show symbols
-* `<leader>g` - show definition
-
 Installation steps
 ===================
 
@@ -30,5 +11,6 @@ Installation steps
 ```
 
 2) Start neovim
-3) Run `:PlugInstall`
-4) Install `the_platinum_searcher`
+3) Run `:PackerSync`
+4) Install `ripgrep`, `fd`, `python-neovim`
+5) Enter <space> or <leader> or <g> to see mappings in NORMAL mode.
