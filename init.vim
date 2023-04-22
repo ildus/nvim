@@ -61,14 +61,7 @@ if has('persistent_undo')
 	set undofile
 endif
 
-" autoinstall everything from ~/.vim/bundle
-execute pathogen#infect()
-set rtp+=~/.fzf
-let $FZF_DEFAULT_COMMAND = 'fd --type f --full-path'
-let g:ackprg = 'fd --type f'
-
 map <Enter> <Leader>
-
 nnoremap <leader>z :silent :let @/ = '\<'.escape(expand('<cword>'), '\').'\>'<cr>:silent :set hlsearch<cr>
 
 " paste selected text to search by /
@@ -130,8 +123,14 @@ au BufRead,BufNewFile *.qsh setfiletype qsc
 au FileType qsc set tabstop=8 shiftwidth=4 noexpandtab
 au FileType qsc set syntax=c
 
-let g:localvimrc_ask = 0
-let g:nv_search_paths = ['~/notes', ]
+" setup notational vim
+set rtp+=~/.fzf
+let notes_dir = '$HOME/notes'
+silent call system('mkdir ' . notes_dir)
+let g:nv_search_paths = [notes_dir, ]
 let g:nv_create_note_key = 'ctrl-n'
+
+" setup localvimrc plugin
+let g:localvimrc_ask = 0
 
 lua require('plugins')
