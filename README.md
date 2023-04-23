@@ -13,4 +13,4 @@ Installation steps
 2) Start neovim
 3) Run `:PackerSync`
 4) Install `ripgrep`, `fd`, `python-neovim`
-5) Enter '<space>' or '<leader>' or '<g>' to see mappings in NORMAL mode.
+5) Enter `<space>` or `<leader>` or `g` to see mappings.
