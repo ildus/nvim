@@ -10,7 +10,7 @@ wk.register({
     w = { "<c-w><c-w>", "Switch windows" },
     b = { "<cmd>GDBreak<cr>", "Set gdb breakpoint" },
     x = { "<cmd>GDBreakClear<cr>", "Clear gdb breakpoints" },
-    ["."] = { "<cmd>Telescope tags<cr>", "Find by tag" }
+    ["."] = { "<cmd>Tags<cr>", "Find by tag" }
   },
   -- See `:help vim.diagnostic.*` for documentation on any of the below functions
   ["<space>"] = {

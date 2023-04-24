@@ -120,5 +120,8 @@ let g:nv_create_note_key = 'ctrl-n'
 " setup localvimrc plugin
 let g:localvimrc_ask = 0
 
+" command for gutentags
+let g:gutentags_file_list_command = 'rg --files'
+
 " set up plugins
 lua require('plugins')

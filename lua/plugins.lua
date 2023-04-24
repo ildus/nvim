@@ -35,7 +35,10 @@ return require('packer').startup(function(use)
   }
   use 'alok/notational-fzf-vim'
   use 'justinmk/vim-syntax-extra'
-
+  use {
+    'junegunn/fzf.vim',
+    requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+  }
 
   use {
     'nvim-telescope/telescope.nvim',
