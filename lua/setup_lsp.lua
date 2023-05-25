@@ -82,7 +82,7 @@ require('lspconfig')['clangd'].setup{
     flags = lsp_flags,
     filetypes = {"c", "sc", "qsc", "h", "sh", "qsh", "cc", "cpp", "hxx"},
 }
-require('lspconfig')['svlangserver'].setup{
+require('lspconfig')['verible'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
