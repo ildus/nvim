@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   'ressu/vim-xdg-cache',
-  'ludovicchabant/vim-gutentags',
+  -- 'ludovicchabant/vim-gutentags',
   'ntpeters/vim-better-whitespace',
   'plasticboy/vim-markdown',
   { 'psf/black', branch = 'main' },
@@ -28,8 +28,31 @@ require("lazy").setup({
     end
   },
   {
-    'ildus/cscope_maps.nvim',
-    dependencies = { 'folke/which-key.nvim' }
+    "dhananjaylatkar/cscope_maps.nvim",
+    dependencies = {
+      "folke/which-key.nvim", -- optional [for whichkey hints]
+      "nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]
+    },
+    opts = {
+      cscope = {
+        picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
+        -- "true" does not open picker for single result, just JUMP
+        skip_picker_for_single_result = true,
+      }
+    },
+  },
+  {
+  "dhananjaylatkar/vim-gutentags",
+    dependencies = {
+      "dhananjaylatkar/cscope_maps.nvim",
+    },
+    init = function()
+      vim.g.gutentags_modules = {"cscope_maps"} -- This is required. Other config is optional
+      vim.g.gutentags_cscope_build_inverted_index_maps = 1
+      vim.g.gutentags_cache_dir = vim.fn.expand("~/code/.gutentags")
+      vim.g.gutentags_file_list_command = "fd -u -e qsh -e sc -e qsc -e c -e cc -e cpp -e h -e hh -e hpp"
+      -- vim.g.gutentags_trace = 1
+    end,
   },
   'alok/notational-fzf-vim',
   'justinmk/vim-syntax-extra',
