@@ -34,6 +34,8 @@ require("lazy").setup({
       "nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]
     },
     opts = {
+      skip_input_prompt = true,
+
       cscope = {
         picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
         -- "true" does not open picker for single result, just JUMP
