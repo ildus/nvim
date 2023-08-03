@@ -41,3 +41,9 @@ wk.register({
   ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "LSP Signature help" },
   ["<K>"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP Hover" },
 })
+
+wk.register({
+  ["<space>"] = {
+    f = { "<cmd>lua vim.lsp.buf.format({async = true })<cr>", "LSP Format Selected" }
+  },
+}, { mode = "v" })
