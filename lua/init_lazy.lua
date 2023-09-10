@@ -22,6 +22,18 @@ require("lazy").setup({
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
+    'ojroques/nvim-osc52',
+    init = function()
+      function copy()
+        if vim.v.event.operator == 'y' and vim.v.event.regname == '+' then
+          require('osc52').copy_register('+')
+        end
+      end
+
+      vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
+    end
+  },
+  {
     'folke/which-key.nvim',
     init = function()
       require("setup_wk")
