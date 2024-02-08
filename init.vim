@@ -112,7 +112,7 @@ au FileType qsc set syntax=c
 
 " setup notational vim
 set rtp+=~/.fzf
-let notes_dir = '$HOME/notes'
+let notes_dir = '$HOME/Sync/notes'
 silent call system('mkdir ' . notes_dir)
 let g:nv_search_paths = [notes_dir, ]
 let g:nv_create_note_key = 'ctrl-n'
