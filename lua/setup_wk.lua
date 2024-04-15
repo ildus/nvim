@@ -3,8 +3,6 @@ wk.register({
   ["<leader>"] = {
     p = { "<cmd>Telescope find_files<cr>", "Find File" },
     g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
-    f = { "<cmd>Telescope buffers<cr>", "Show buffers" },
-    o = { "<cmd>NV<cr>", "Notes" },
     l = { "<cmd>set invlist<cr>", "Show hidden symbols" },
     v = { "<cmd>vsplit<cr>", "Split vertically" },
     w = { "<c-w><c-w>", "Switch windows" },
@@ -26,8 +24,8 @@ wk.register({
       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     },
-
     f = { "<cmd>lua vim.lsp.buf.format({async = true })<cr>", "LSP Format" },
+    n = { "<cmd>NV<cr>", "Notes" },
   },
   g = {
     r = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "LSP References" },
@@ -38,6 +36,7 @@ wk.register({
     d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "LSP Definitions" },
     t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "LSP Type definitions" },
   },
+  f = { "<cmd>Telescope buffers<cr>", "Show buffers" },
   ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "LSP Signature help" },
   ["<K>"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP Hover" },
 })

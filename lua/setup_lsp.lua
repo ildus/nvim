@@ -8,15 +8,22 @@ local on_attach = function(client, bufnr)
   client.server_capabilities.semanticTokensProvider = nil
 end
 
+local lspconfig = require('lspconfig')
+
+function installed(set, key)
+    return set[key] ~= nil
+end
+
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require('lspconfig')['dartls'].setup{
+
+lspconfig['dartls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['rust_analyzer'].setup{
+lspconfig['rust_analyzer'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
     -- Server-specific settings...
@@ -24,21 +31,25 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
-require('lspconfig')['gopls'].setup{
+lspconfig['gopls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
-require('lspconfig')['pyright'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-    filetypes = {"python"},
-}
-require('lspconfig')['clangd'].setup{
+lspconfig['clangd'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
     filetypes = {"c", "sc", "qsc", "h", "qsh", "cc", "cpp", "hxx"},
 }
-require('lspconfig')['verible'].setup{
+lspconfig['verible'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+
+-- or pyright
+if installed(lspconfig, 'jedi_language_server') then
+    lspconfig['jedi_language_server'].setup{
+      on_attach = on_attach,
+      flags = lsp_flags,
+      filetypes = {"python"},
+    }
+end
