@@ -124,7 +124,6 @@ let g:localvimrc_ask = 0
 let g:gutentags_file_list_command = 'rg --files'
 
 " set up plugins
-lua require('init_basic')
 lua require('init_lazy')
 
 :autocmd BufWritePre [:;\\]*
