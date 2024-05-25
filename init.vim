@@ -28,7 +28,7 @@ set linebreak textwidth=0
 set fileencodings=utf-8,cp1251,koi8-r
 set nojoinspaces " prevent double space when joining lines ending with '.'
 set nostartofline " prevent jumping to the start of line on pgdn or pgup
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 set laststatus=2
 set statusline=%F       "tail of the filename
@@ -124,6 +124,7 @@ let g:localvimrc_ask = 0
 let g:gutentags_file_list_command = 'rg --files'
 
 " set up plugins
+lua require('init_basic')
 lua require('init_lazy')
 
 :autocmd BufWritePre [:;\\]*
