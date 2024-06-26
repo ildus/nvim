@@ -46,7 +46,6 @@ set signcolumn=yes
 " set list
 set listchars=tab:\ \ ┊,trail:·
 
-set rnu
 set backspace=indent,eol,start
 
 let cache_dir = '$HOME/.cache/vim'
