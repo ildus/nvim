@@ -1,48 +1,34 @@
 local wk = require("which-key")
-wk.register({
-  ["<leader>"] = {
-    p = { "<cmd>Telescope find_files<cr>", "Find File" },
-    g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
-    l = { "<cmd>set invlist<cr>", "Show hidden symbols" },
-    v = { "<cmd>vsplit<cr>", "Split vertically" },
-    w = { "<c-w><c-w>", "Switch windows" },
-    b = { "<cmd>GDBreak<cr>", "Set gdb breakpoint" },
-    x = { "<cmd>GDBreakClear<cr>", "Clear gdb breakpoints" },
-    ["."] = { "<cmd>Tags<cr>", "Find by tag" }
-  },
-  -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-  ["<space>"] = {
-    d = {
-      name = "Diagnostic",
-      f = { "<cmd>vim.diagnostic.open_float<cr>", "Diagnostic: open floating window" },
-      l = { "<cmd>vim.diagnostic.setloclist<cr>", "Diagnostic: set location list" },
-      p = { "<cmd>vim.diagnostic.goto_prev<cr>", "Diagnostic: previous" },
-      n = { "<cmd>vim.diagnostic.goto_next<cr>", "Diagnostic: next" },
-    },
-    c = {
-      name = "LSP Code Actions",
-      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    },
-    f = { "<cmd>lua vim.lsp.buf.format({async = true })<cr>", "LSP Format" },
-    n = { "<cmd>NV<cr>", "Notes" },
-  },
-  g = {
-    r = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "LSP References" },
-    c = { "<cmd>lua require('telescope.builtin').lsp_incoming_calls()<cr>", "LSP Incoming calls" },
-    o = { "<cmd>lua require('telescope.builtin').lsp_outgoing_calls()<cr>", "LSP Outgoing calls" },
-    s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "LSP Document symbols" },
-    i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", "LSP Implementations" },
-    d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", "LSP Definitions" },
-    t = { "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", "LSP Type definitions" },
-  },
-  f = { "<cmd>Telescope buffers<cr>", "Show buffers" },
-  ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "LSP Signature help" },
-  ["<K>"] = { "<cmd>lua vim.lsp.buf.hover()<cr>", "LSP Hover" },
-})
-
-wk.register({
-  ["<space>"] = {
-    f = { "<cmd>lua vim.lsp.buf.format({async = true })<cr>", "LSP Format Selected" }
-  },
-}, { mode = "v" })
+wk.add(
+  {
+    { "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "LSP Signature help" },
+    { "<K>", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "LSP Hover" },
+    { "<leader>.", "<cmd>Tags<cr>", desc = "Find by tag" },
+    { "<leader>b", "<cmd>GDBreak<cr>", desc = "Set gdb breakpoint" },
+    { "<leader>f", "<cmd>Telescope buffers<cr>", desc = "Show buffers" },
+    { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+    { "<leader>l", "<cmd>set invlist<cr>", desc = "Show hidden symbols" },
+    { "<leader>p", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+    { "<leader>v", "<cmd>vsplit<cr>", desc = "Split vertically" },
+    { "<leader>w", "<c-w><c-w>", desc = "Switch windows" },
+    { "<leader>x", "<cmd>GDBreakClear<cr>", desc = "Clear gdb breakpoints" },
+    { "<space>c", group = "LSP Code Actions" },
+    { "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+    { "<space>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+    { "<space>d", group = "Diagnostic" },
+    { "<space>df", "<cmd>vim.diagnostic.open_float<cr>", desc = "Diagnostic: open floating window" },
+    { "<space>dl", "<cmd>vim.diagnostic.setloclist<cr>", desc = "Diagnostic: set location list" },
+    { "<space>dn", "<cmd>vim.diagnostic.goto_next<cr>", desc = "Diagnostic: next" },
+    { "<space>dp", "<cmd>vim.diagnostic.goto_prev<cr>", desc = "Diagnostic: previous" },
+    { "<space>f", "<cmd>lua vim.lsp.buf.format({async = true })<cr>", desc = "LSP Format" },
+    { "<space>f", "<cmd>lua vim.lsp.buf.format({async = true })<cr>", desc = "LSP Format Selected", mode = "v" },
+    { "<space>n", "<cmd>NV<cr>", desc = "Notes" },
+    { "gc", "<cmd>lua require('telescope.builtin').lsp_incoming_calls()<cr>", desc = "LSP Incoming calls" },
+    { "gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", desc = "LSP Definitions" },
+    { "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", desc = "LSP Implementations" },
+    { "go", "<cmd>lua require('telescope.builtin').lsp_outgoing_calls()<cr>", desc = "LSP Outgoing calls" },
+    { "gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", desc = "LSP References" },
+    { "gs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", desc = "LSP Document symbols" },
+    { "gt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>", desc = "LSP Type definitions" },
+  }
+)
