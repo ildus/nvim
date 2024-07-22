@@ -42,14 +42,14 @@ require("lazy").setup({
   {
     "dhananjaylatkar/cscope_maps.nvim",
     dependencies = {
-      "folke/which-key.nvim", -- optional [for whichkey hints]
-      "nvim-telescope/telescope.nvim", -- optional [for picker="telescope"]
+      "folke/which-key.nvim",
+      "ibhagwan/fzf-lua",
     },
     opts = {
       skip_input_prompt = true,
 
       cscope = {
-        picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
+        picker = "fzf-lua", -- "telescope", "fzf-lua" or "quickfix"
         -- "true" does not open picker for single result, just JUMP
         skip_picker_for_single_result = true,
       }
