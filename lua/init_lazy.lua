@@ -45,6 +45,7 @@ require("lazy").setup({
       "folke/which-key.nvim",
       "ibhagwan/fzf-lua",
     },
+    commit = "ebb3941",
     opts = {
       skip_input_prompt = true,
 
