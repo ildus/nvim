@@ -15,7 +15,6 @@ require("lazy").setup({
   'ressu/vim-xdg-cache',
   'ntpeters/vim-better-whitespace',
   'plasticboy/vim-markdown',
-  { 'psf/black', branch = 'main' },
   {
     'embear/vim-localvimrc',
     dependencies = { 'nvim-lua/plenary.nvim' }
