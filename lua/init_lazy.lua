@@ -61,7 +61,7 @@ require("lazy").setup({
       skip_input_prompt = true,
 
       cscope = {
-        picker = "fzf-lua", -- "telescope", "fzf-lua" or "quickfix"
+        picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
         -- "true" does not open picker for single result, just JUMP
         skip_picker_for_single_result = true,
       }
@@ -83,5 +83,5 @@ require("lazy").setup({
     init = function()
       require("setup_lsp")
     end
-  }
+  },
 })
