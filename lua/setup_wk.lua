@@ -22,7 +22,7 @@ wk.add(
     { "<space>dp", "<cmd>vim.diagnostic.goto_prev<cr>", desc = "Diagnostic: previous" },
     { "<space>f", "<cmd>lua vim.lsp.buf.format({async = true })<cr>", desc = "LSP Format" },
     { "<space>f", "<cmd>lua vim.lsp.buf.format({async = true })<cr>", desc = "LSP Format Selected", mode = "v" },
-    { "<space>n", "<cmd>NV<cr>", desc = "Notes" },
+    { "<space>n", "<cmd>ZK<cr>", desc = "Notes" },
     { "gc", "<cmd>lua require('telescope.builtin').lsp_incoming_calls()<cr>", desc = "LSP Incoming calls" },
     { "gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>", desc = "LSP Definitions" },
     { "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", desc = "LSP Implementations" },

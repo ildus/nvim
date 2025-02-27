@@ -54,7 +54,7 @@ require("lazy").setup({
     "dhananjaylatkar/cscope_maps.nvim",
     dependencies = {
       "folke/which-key.nvim",
-      "ibhagwan/fzf-lua",
+      --"ibhagwan/fzf-lua",
     },
     commit = "ebb3941",
     opts = {
@@ -67,7 +67,7 @@ require("lazy").setup({
       }
     },
   },
-  'alok/notational-fzf-vim',
+  "Konfekt/zappykasten.vim",
   'justinmk/vim-syntax-extra',
   {
     'junegunn/fzf.vim',

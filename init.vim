@@ -110,11 +110,11 @@ au FileType qsc set tabstop=8 shiftwidth=4 noexpandtab
 au FileType qsc set syntax=c
 
 " setup notational vim
-set rtp+=~/.fzf
 let notes_dir = '$HOME/Sync/notes'
 silent call system('mkdir ' . notes_dir)
-let g:nv_search_paths = [notes_dir, ]
-let g:nv_create_note_key = 'ctrl-n'
+let g:zk_search_paths = [notes_dir, ]
+let g:zk_main_directory = g:zk_search_paths[0]
+let g:zk_create_note_key = 'ctrl-n'
 
 " setup localvimrc plugin
 let g:localvimrc_ask = 0
