@@ -67,8 +67,13 @@ require("lazy").setup({
       }
     },
   },
-  "Konfekt/zappykasten.vim",
   'justinmk/vim-syntax-extra',
+  {
+    "Konfekt/zappykasten.vim",
+    dependencies = {
+      'junegunn/fzf.vim',
+    },
+  },
   {
     'junegunn/fzf.vim',
     dependencies = {

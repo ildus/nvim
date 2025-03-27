@@ -110,7 +110,7 @@ au FileType qsc set tabstop=8 shiftwidth=4 noexpandtab
 au FileType qsc set syntax=c
 
 " setup notational vim
-let notes_dir = '$HOME/Sync/notes'
+let notes_dir = "~/Sync/notes"
 silent call system('mkdir ' . notes_dir)
 let g:zk_search_paths = [notes_dir, ]
 let g:zk_main_directory = g:zk_search_paths[0]
