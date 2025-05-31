@@ -112,9 +112,6 @@ au FileType qsc set syntax=c
 " setup notational vim
 let notes_dir = "~/Sync/notes"
 silent call system('mkdir ' . notes_dir)
-let g:zk_search_paths = [notes_dir, ]
-let g:zk_main_directory = g:zk_search_paths[0]
-let g:zk_create_note_key = 'ctrl-n'
 
 " setup localvimrc plugin
 let g:localvimrc_ask = 0
@@ -124,6 +121,9 @@ let g:gutentags_file_list_command = 'rg --files'
 
 " set up plugins
 lua require('init_lazy')
+
+let g:notes_path = [notes_dir, ]
+silent! command -nargs=* -bang Notes lua require('notes').search_notes()
 
 :autocmd BufWritePre [:;\\]*
 \   try | echoerr 'Forbidden file name: '..expand('<afile>') | endtry

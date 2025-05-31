@@ -13,23 +13,24 @@ vim.opt.rtp:prepend(lazypath)
 
 if (os.getenv('SSH_TTY') == nil)
 then
-    vim.g.clipboard = {
-      name = 'OSC 52',
-      copy = {
-        ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-      },
-      paste = {
-        ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-        ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-      },
-    }
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
 end
 
 require("lazy").setup({
   'ressu/vim-xdg-cache',
   'ntpeters/vim-better-whitespace',
   'plasticboy/vim-markdown',
+  "ibhagwan/fzf-lua",
   {
     'embear/vim-localvimrc',
     dependencies = { 'nvim-lua/plenary.nvim' }
@@ -42,7 +43,7 @@ require("lazy").setup({
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-ui-select.nvim',
     },
-    init = function ()
+    init = function()
       require('telescope').load_extension('fzf')
       require("telescope").load_extension("ui-select")
     end
@@ -57,35 +58,20 @@ require("lazy").setup({
     "dhananjaylatkar/cscope_maps.nvim",
     dependencies = {
       "folke/which-key.nvim",
-      --"ibhagwan/fzf-lua",
+      "nvim-telescope/telescope.nvim",
+      "ibhagwan/fzf-lua",
     },
-    commit = "ebb3941",
     opts = {
       skip_input_prompt = true,
 
       cscope = {
-        picker = "telescope", -- "telescope", "fzf-lua" or "quickfix"
+        picker = "telescope", -- "telescope", "fzf-lua"
         -- "true" does not open picker for single result, just JUMP
         skip_picker_for_single_result = true,
       }
     },
   },
   'justinmk/vim-syntax-extra',
-  {
-    "Konfekt/zappykasten.vim",
-    dependencies = {
-      'junegunn/fzf.vim',
-    },
-  },
-  {
-    'junegunn/fzf.vim',
-    dependencies = {
-      {
-        'junegunn/fzf',
-        build = ':call fzf#install()',
-      },
-    },
-  },
   {
     'neovim/nvim-lspconfig',
     init = function()
