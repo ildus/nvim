@@ -32,21 +32,17 @@ require("lazy").setup({
   'plasticboy/vim-markdown',
   "ibhagwan/fzf-lua",
   {
-    'embear/vim-localvimrc',
-    dependencies = { 'nvim-lua/plenary.nvim' }
+    "miikanissi/modus-themes.nvim",
+    --"ellisonleao/gruvbox.nvim",
+    priority = 1000,
+    config = true,
+    init = function()
+      vim.cmd("colorscheme modus") -- gruvbox
+    end
   },
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-      'nvim-telescope/telescope-ui-select.nvim',
-    },
-    init = function()
-      require('telescope').load_extension('fzf')
-      require("telescope").load_extension("ui-select")
-    end
+    'embear/vim-localvimrc',
+    dependencies = { 'nvim-lua/plenary.nvim' }
   },
   {
     'folke/which-key.nvim',
@@ -58,14 +54,13 @@ require("lazy").setup({
     "dhananjaylatkar/cscope_maps.nvim",
     dependencies = {
       "folke/which-key.nvim",
-      "nvim-telescope/telescope.nvim",
       "ibhagwan/fzf-lua",
     },
     opts = {
       skip_input_prompt = true,
 
       cscope = {
-        picker = "telescope", -- "telescope", "fzf-lua"
+        picker = "fzf-lua",
         -- "true" does not open picker for single result, just JUMP
         skip_picker_for_single_result = true,
       }

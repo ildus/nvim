@@ -71,7 +71,7 @@ if (empty($SCREEN_LIST))
 endif
 
 set background=dark
-colorscheme wombat256
+"colorscheme wombat256
 
 function! MakeGdbBreak()
 	let path = "break ".expand('%').":".line(".")
@@ -111,7 +111,7 @@ au FileType qsc set syntax=c
 
 " setup notational vim
 let notes_dir = "~/Sync/notes"
-silent call system('mkdir ' . notes_dir)
+silent call system('mkdir -p ' . notes_dir)
 
 " setup localvimrc plugin
 let g:localvimrc_ask = 0
@@ -124,6 +124,7 @@ lua require('init_lazy')
 
 let g:notes_path = [notes_dir, ]
 silent! command -nargs=* -bang Notes lua require('notes').search_notes()
+" silent! command -nargs=* -bang NotesTel lua require('notes_telescope').search_notes()
 
 :autocmd BufWritePre [:;\\]*
 \   try | echoerr 'Forbidden file name: '..expand('<afile>') | endtry
