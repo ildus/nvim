@@ -32,15 +32,6 @@ require("lazy").setup({
   'plasticboy/vim-markdown',
   "ibhagwan/fzf-lua",
   {
-    "miikanissi/modus-themes.nvim",
-    --"ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = true,
-    init = function()
-      vim.cmd("colorscheme modus") -- gruvbox
-    end
-  },
-  {
     'embear/vim-localvimrc',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
