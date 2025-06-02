@@ -32,13 +32,6 @@ require("lazy").setup({
   'plasticboy/vim-markdown',
   "ibhagwan/fzf-lua",
   {
-    "sheerun/vim-wombat-scheme",
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      vim.cmd("colorscheme wombat")
-    end
-  },
-  {
     'embear/vim-localvimrc',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
