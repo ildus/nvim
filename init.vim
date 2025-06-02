@@ -71,7 +71,7 @@ if (empty($SCREEN_LIST))
 endif
 
 set background=dark
-colorscheme wombat256
+"colorscheme wombat256
 
 function! MakeGdbBreak()
 	let path = "break ".expand('%').":".line(".")
