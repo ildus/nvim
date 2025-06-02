@@ -10,6 +10,6 @@ Installation steps
 	git clone git@github.com:ildus/nvim.git ~/.config/nvim
 ```
 
-2) Start neovim
-3) Install `ripgrep`, `fd` (fdfind in ubuntu), `python-neovim`
+2) Install `ripgrep`, `fd` (fdfind in ubuntu), `python-neovim`
+3) Start neovim
 4) Enter `<space>` or `<leader>` (Enter) or `g` to see mappings.
