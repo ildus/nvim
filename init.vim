@@ -5,7 +5,6 @@ filetype on
 filetype plugin on
 " filetype indent on
 
-set ttimeoutlen=0
 set hlsearch
 set nowrap
 set nomodeline
