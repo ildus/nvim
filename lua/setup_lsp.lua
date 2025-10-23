@@ -9,8 +9,6 @@ vim.diagnostic.config({
   virtual_text = true,
 })
 
-local lspconfig = require('lspconfig')
-
 local function installed(set, key)
   return set[key] ~= nil
 end
@@ -20,38 +18,43 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-lspconfig['dartls'].setup {
+vim.lsp.config('dartls', {
   on_attach = on_attach,
   flags = lsp_flags,
-}
-lspconfig['rust_analyzer'].setup {
+})
+vim.lsp.config('rust_analyzer', {
   on_attach = on_attach,
   flags = lsp_flags,
   -- Server-specific settings...
   settings = {
     ["rust-analyzer"] = {}
   }
-}
-lspconfig['gopls'].setup {
+})
+vim.lsp.config('gopls', {
   on_attach = on_attach,
   flags = lsp_flags,
-}
-lspconfig['clangd'].setup {
+})
+vim.lsp.config('clangd', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "c", "sc", "qsc", "h", "qsh", "cc", "cpp", "hxx" },
-}
-lspconfig['verible'].setup {
+})
+vim.lsp.config('verible', {
   on_attach = on_attach,
   flags = lsp_flags,
-}
-lspconfig['ruff'].setup({
+})
+vim.lsp.config('ruff', {
+  on_attach = on_attach,
+  flags = lsp_flags,
+  filetypes = { "python" },
+})
+vim.lsp.config('jedi_language_server', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "python" },
 })
 
-lspconfig['lua_ls'].setup({
+vim.lsp.config('lua_ls', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "lua" },
@@ -88,15 +91,6 @@ lspconfig['lua_ls'].setup({
     Lua = {}
   }
 })
-
--- or pyright
-if installed(lspconfig, 'jedi_language_server') then
-  lspconfig['jedi_language_server'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    filetypes = { "python" },
-  }
-end
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
