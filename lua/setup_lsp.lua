@@ -22,6 +22,8 @@ vim.lsp.config('dartls', {
   on_attach = on_attach,
   flags = lsp_flags,
 })
+vim.lsp.enable('dartls')
+
 vim.lsp.config('rust_analyzer', {
   on_attach = on_attach,
   flags = lsp_flags,
@@ -30,29 +32,40 @@ vim.lsp.config('rust_analyzer', {
     ["rust-analyzer"] = {}
   }
 })
+vim.lsp.enable('rust_analyzer')
+
 vim.lsp.config('gopls', {
   on_attach = on_attach,
   flags = lsp_flags,
 })
+vim.lsp.enable('gopls')
+
 vim.lsp.config('clangd', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "c", "sc", "qsc", "h", "qsh", "cc", "cpp", "hxx" },
 })
+vim.lsp.enable('clangd')
+
 vim.lsp.config('verible', {
   on_attach = on_attach,
   flags = lsp_flags,
 })
+vim.lsp.enable('verible')
+
 vim.lsp.config('ruff', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "python" },
 })
+vim.lsp.enable('ruff')
+
 vim.lsp.config('jedi_language_server', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "python" },
 })
+vim.lsp.enable('jedi_language_server')
 
 vim.lsp.config('lua_ls', {
   on_attach = on_attach,
@@ -91,6 +104,7 @@ vim.lsp.config('lua_ls', {
     Lua = {}
   }
 })
+vim.lsp.enable('lua_ls')
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
