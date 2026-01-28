@@ -60,12 +60,19 @@ vim.lsp.config('ruff', {
 })
 vim.lsp.enable('ruff')
 
-vim.lsp.config('jedi_language_server', {
+--vim.lsp.config('jedi_language_server', {
+--  on_attach = on_attach,
+--  flags = lsp_flags,
+--  filetypes = { "python" },
+--})
+--vim.lsp.enable('jedi_language_server')
+
+vim.lsp.config('ty', {
   on_attach = on_attach,
   flags = lsp_flags,
   filetypes = { "python" },
 })
-vim.lsp.enable('jedi_language_server')
+vim.lsp.enable('ty')
 
 vim.lsp.config('lua_ls', {
   on_attach = on_attach,
