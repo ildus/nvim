@@ -40,10 +40,31 @@ vim.lsp.config('gopls', {
 })
 vim.lsp.enable('gopls')
 
+vim.filetype.add({
+  extension = {
+    sc = "c",    -- Map .sc files to C
+    qsc = "c",   -- Map .qsc files to C
+    qsh = "c",
+    h = "c",
+    hxx = "cpp",
+    cc = "cpp",
+  },
+})
+
 vim.lsp.config('clangd', {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+    "--fallback-style=llvm"
+  },
   on_attach = on_attach,
   flags = lsp_flags,
-  filetypes = { "c", "sc", "qsc", "h", "qsh", "cc", "cpp", "hxx" },
+  root_markers = { 'compile_commands.json', ".git" },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 })
 vim.lsp.enable('clangd')
 
