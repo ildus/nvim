@@ -18,26 +18,8 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-vim.lsp.config('dartls', {
-  on_attach = on_attach,
-  flags = lsp_flags,
-})
-vim.lsp.enable('dartls')
-
-vim.lsp.config('rust_analyzer', {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  -- Server-specific settings...
-  settings = {
-    ["rust-analyzer"] = {}
-  }
-})
+--vim.lsp.enable('dartls')
 vim.lsp.enable('rust_analyzer')
-
-vim.lsp.config('gopls', {
-  on_attach = on_attach,
-  flags = lsp_flags,
-})
 vim.lsp.enable('gopls')
 
 vim.filetype.add({
@@ -67,33 +49,15 @@ vim.lsp.config('clangd', {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 })
 vim.lsp.enable('clangd')
-
-vim.lsp.config('verible', {
-  on_attach = on_attach,
-  flags = lsp_flags,
+vim.lsp.config("grph", {
+  cmd = { "grph", "serve", "--lsp" },
+  filetypes = { "c", "cpp", "python", "rust", "go", "javascript", "typescript", "typescriptreact" },
+  root_markers = { ".grph", ".git" },
 })
-vim.lsp.enable('verible')
 
-vim.lsp.config('ruff', {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  filetypes = { "python" },
-})
 vim.lsp.enable('ruff')
-
---vim.lsp.config('jedi_language_server', {
---  on_attach = on_attach,
---  flags = lsp_flags,
---  filetypes = { "python" },
---})
---vim.lsp.enable('jedi_language_server')
-
-vim.lsp.config('ty', {
-  on_attach = on_attach,
-  flags = lsp_flags,
-  filetypes = { "python" },
-})
 vim.lsp.enable('ty')
+vim.lsp.enable('grph')
 
 vim.lsp.config('lua_ls', {
   on_attach = on_attach,
@@ -135,16 +99,18 @@ vim.lsp.config('lua_ls', {
 vim.lsp.enable('lua_ls')
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+  group = vim.api.nvim_create_augroup('lsp_attach_disable_highlight', { clear = true }),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client == nil then
       return
     end
-    if client.name == 'ruff' then
+
+    client.server_capabilities.semanticTokensProvider = nil
+    --if client.name == 'ruff' then
       -- Disable hover in favor of jedi
-      client.server_capabilities.hoverProvider = false
-    end
+      --client.server_capabilities.hoverProvider = false
+    --end
   end,
-  desc = 'LSP: Disable hover capability from Ruff',
+  desc = 'LSP: Disable highlight',
 })
