@@ -24,9 +24,9 @@ vim.lsp.enable('gopls')
 
 vim.filetype.add({
   extension = {
-    sc = "c",    -- Map .sc files to C
-    qsc = "c",   -- Map .qsc files to C
-    qsh = "c",
+    sc = "esqlc",    -- Map .sc files to C
+    qsc = "esqlc",   -- Map .qsc files to C
+    qsh = "esqlc",
     h = "c",
     hxx = "cpp",
     cc = "cpp",
@@ -51,7 +51,7 @@ vim.lsp.config('clangd', {
 vim.lsp.enable('clangd')
 vim.lsp.config("grph", {
   cmd = { "grph", "serve", "--lsp" },
-  filetypes = { "c", "cpp", "python", "rust", "go", "javascript", "typescript", "typescriptreact" },
+  filetypes = { "c", "cpp", "esqlc", "python", "rust", "go", "javascript", "typescript", "typescriptreact" },
   root_markers = { ".grph", ".git" },
 })
 

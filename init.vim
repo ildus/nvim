@@ -71,6 +71,11 @@ endif
 
 set background=dark
 colorscheme wombat
+" clearer diff colors (add / delete / change / inline)
+hi DiffAdd    guibg=#1e3a2a guifg=NONE
+hi DiffDelete guibg=#3a1e1e guifg=#7a5050
+hi DiffChange guibg=#1e2a3a guifg=NONE
+hi DiffText   guibg=#3a4a1e guifg=NONE gui=NONE
 
 function! MakeGdbBreak()
 	let path = "break ".expand('%').":".line(".")
