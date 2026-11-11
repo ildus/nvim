@@ -31,7 +31,7 @@ require("lazy").setup({
   'ntpeters/vim-better-whitespace',
   'plasticboy/vim-markdown',
   "ibhagwan/fzf-lua",
-  "sindrets/diffview.nvim",
+  "dlyongemallo/diffview-plus.nvim",
   {
     'embear/vim-localvimrc',
     dependencies = { 'nvim-lua/plenary.nvim' }
